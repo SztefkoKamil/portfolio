@@ -3,7 +3,7 @@ import style from './sass/style.scss'
 window.onload = () => {
 
   let handler = document.getElementById('text');
-  handler.textContent = 'Text added by JavaScript';
+  handler.textContent = 'Text added by JavaScript!!';
 
   handler = document.getElementById('title');
   let title = handler.textContent;
