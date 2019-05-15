@@ -1,0 +1,14 @@
+{
+  "name": "webkas-portfolio",
+  "version": "1.0.0",
+  "description": "portfolio",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "portfolio"
+  ],
+  "author": "webkas",
+  "license": "MIT"
+}
