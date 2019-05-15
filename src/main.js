@@ -1,4 +1,4 @@
-import style from './sass/style.scss'
+import './sass/style.scss'
 
 window.onload = () => {
 

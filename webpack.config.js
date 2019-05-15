@@ -17,28 +17,27 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {presets: ['@babel/preset-env']}
+          options: { presets: ['@babel/preset-env'] }
         }
       },
       {
         test: /\.scss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: process.env.NODE_ENV === 'development',
-            }
-          },
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.html$/,
+        use: ['html-loader']
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          outputPath: 'images' 
+          outputPath: 'images/'
         }
       }
     ]
