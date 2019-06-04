@@ -55,6 +55,7 @@ module.exports = {
   ],
   devServer: {
 		port: 8080,
-		noInfo: true
+    noInfo: true,
+    overlay: true
 	}
 };
