@@ -67,3 +67,20 @@ body{
   font-weight: 300;
   margin-left: 60px;
 }
+
+
+.main__about{
+  padding: 70px 0 20px 0;
+}
+.about__title{
+  font-size: 48px;
+  text-align: center;
+}
+.about__body{
+  width: 80vw;
+  margin: 20px auto;
+}
+.about__body p{
+  margin-bottom: 10px;
+  text-align: justify;
+}
