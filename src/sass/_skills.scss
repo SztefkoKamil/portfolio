@@ -1,0 +1,33 @@
+
+.main__skills{
+  padding: 70px 0 20px 0;
+}
+.skills__title{
+  font-size: 24px;
+  width: 300px;
+  text-align: center;
+  margin: 0 auto;
+}
+.skills__technologies{
+  width: 80vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  grid-gap: 10px;
+  margin: 30px auto;
+}
+.skills__tile{
+  width: 120px;
+  height: 130px;
+  background: #fff;
+  padding: 12px;
+}
+.skills-tile__title{
+  color: #000;
+  text-align: center;
+}
+.skills__description{
+  width: 80vw;
+  margin: 0 auto;
+  text-align: center;
+}
