@@ -15,6 +15,7 @@
 
 html{
   font-size: 10px;
+
 }
 
 body{
@@ -23,6 +24,14 @@ body{
   font-weight: 300;
   color: #fff;
   overflow-x: hidden;
+}
+
+body::-webkit-scrollbar{
+  background-color: rgb(20, 20, 20);
+}
+body::-webkit-scrollbar-thumb{
+  background-color: rgb(118, 22, 207);
+  border-radius: 35%;
 }
 
 .background{
