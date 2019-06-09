@@ -38,7 +38,15 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          outputPath: 'images/'
+          outputPath: 'assets/images/'
+        }
+      },
+      {
+        test: /\.pdf$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'assets/'
         }
       }
     ]
@@ -51,7 +59,7 @@ module.exports = {
       filename: 'css/styles.css'
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin()
+    // new CleanWebpackPlugin()
   ],
   devServer: {
 		port: 8080,
