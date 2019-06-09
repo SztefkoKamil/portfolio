@@ -8,9 +8,19 @@
 }
 .about__body{
   width: 80vw;
+  max-width: 1215px;
   margin: 20px auto;
 }
-.about__body p{
+
+.about__paragraph{
+  font-size: calc(12px + 1vw);
   margin-bottom: 10px;
   text-align: justify;
+}
+
+
+@media screen and (min-width: 1281px){
+  .about__paragraph{
+    font-size: 24px;
+  }
 }
