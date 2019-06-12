@@ -1,5 +1,92 @@
 
 .nav{
   position: fixed;
-  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 10;
+
+  a{
+    text-decoration: none;
+  }
+}
+
+.nav__menu-bar{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background: #564C4C;
+  position: relative;
+  z-index: 4;
+}
+
+.menu__icon-btn{
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+
+  img{
+    width: 40px;
+  }
+}
+
+.menu__toggle-btn--closed{
+  position: absolute;
+  right: 10px;
+  z-index: 6;
+  border: none;
+  top: 7px;
+}
+.menu__toggle-btn--open{
+  top: 70px;
+  transform: rotate(180deg);
+}
+
+.nav__menu-field--closed{
+  height: 230px;
+  width: 100%;
+  background: #564C4C;
+  position: absolute;
+  z-index: 2;
+  top: -170px;
+}
+.nav__menu-field--open{
+  top: 0px;
+}
+
+.menu__text-btns{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 5px;
+}
+
+.menu__text-btn{
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 1px 0;
+
+  &:first-child{
+    margin-left: 15px;
+  }
+  &:nth-child(2){
+    margin-left: 70px;
+  }
+  &:nth-child(3){
+    margin-left: 125px;
+  }
+  &:nth-child(4){
+    margin-left: 180px;
+  }
+  &:nth-child(5){
+    margin-left: 235px;
+  }
 }
