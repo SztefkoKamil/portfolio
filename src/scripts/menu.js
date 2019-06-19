@@ -1,4 +1,6 @@
-module.exports.menu = () => {
+'user strict';
+
+module.exports.activeClickListener = () => {
   const menuBtn = document.getElementById('menu-toggle-btn'),
         menuField = document.getElementById('menu-field');
 
