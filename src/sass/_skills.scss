@@ -3,125 +3,57 @@
   padding: 70px 0 20px 0;
 }
 
+.skills__body {
+  width: 100%;
+}
+
 .skills__title{
-  font-size: calc(2rem + 1.5vw);
-  width: 80vw;
   text-align: center;
-  margin: 0 auto 50px auto;
+  font-size: 3rem;
+  padding: 10px;
 }
 
 .skills__tile{
   background: #fff;
   padding: 30px 15px;
   color: #000;
-  width: 80vw;
-  max-width: 800px;
-  margin: 30px auto;
+  margin: 20px 0;
+  width: 100%;
 }
 
 .skills-tile__title{
   color: #000;
   text-align: center;
-  font-size: calc(1.8rem + 0.5vw);
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.skills-tile__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 1rem;
 }
 
 .skills-tile__skill{
-  margin-top: 20px;
-  padding: calc(8px + 1.2vw) calc(5px + 1vw);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   border: 1px solid #888;
-  min-height: calc(5rem + 6vw);
-  overflow: hidden;
   box-shadow: inset 0 0 10px 2px gray;
+  padding: 20px;
 }
 
 .skills-tile__image{
-  float: left;
-  max-width: 10rem;
   width: calc(3rem + 8vw);
-  margin-right: 1.5rem;
-}
-
-.skills__image-wrapper--databases{
-  float: left;
-  display: flex;
-  flex-direction: column;
-
-  .skills-tile__image{
-    float: none;
-    
-    &:first-child{
-      margin-bottom: 10px;
-    }
-  }
-}
-.skills-tile__image--mongodb{
-  width: calc(5rem + 7vw);
-}
-.skills-tile__image--mysql{
-  width: calc(4rem + 8vw);
-}
-.skills-tile__image--node{
-  width: calc(3rem + 20vw);
-  max-width: 200px;;
-}
-.skills-tile__image--php{
-  width: calc(5rem + 10vw);
-  max-width: 15rem;
-}
-.skills-tile__image--vsc{
-  width: calc(5rem + 3vw);
 }
 
 .skills-tile__caption{
-  font-size: calc(1rem + 0.8vw);
-  line-height: calc(1rem + 2vw);
+  text-align: center;
+  font-weight: 700;
+  margin-top: 10px;
 }
 
 
 @media screen and (min-width: 769px){
-  .skills-tile__skill{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .skills-tile__image{
-    float: none;
-  }
-}
-
-
-@media screen and (min-width: 1281px){
-  .skills__title{
-    font-size: 4rem;
-    
-  }
-
-  .skills__body{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 70px;
-    justify-items: center;
-    align-items: start;
-  }
-
-  .skills__tile{
-    width: 40vw;
-    max-width: 700px;
-  }
-
-  .skills-tile__skill{
-    padding: calc(8px + 1.2vw) calc(5px + 1vw);
-    min-height: calc(5rem + 6vw);
-  }
-
-  .skills-tile__image{
-    width: calc(3rem + 4vw);
-  }
-  .skills-tile__image--php{
-    width: calc(5rem + 4vw);
-  }
-  .skills-tile__caption{
-    font-size: calc(1rem + 0.4vw);
-    line-height: calc(1rem + 1vw);
-  }
 }
