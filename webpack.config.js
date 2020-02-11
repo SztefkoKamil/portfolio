@@ -40,14 +40,6 @@ module.exports = {
           name: '[name].[ext]',
           outputPath: 'assets/images/'
         }
-      },
-      {
-        test: /\.pdf$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'assets/'
-        }
       }
     ]
   },
