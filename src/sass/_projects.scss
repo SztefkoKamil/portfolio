@@ -1,57 +1,62 @@
 
-.main__projects{
+.main__projects {
   padding: 70px 0 20px 0;
 }
 
-.projects__title{
-  font-size: 34px;
+.projects__title {
+  font-size: 3rem;
   text-align: center;
   padding: 10px 0;
   margin-bottom: 30px;
 }
 
-.projects__body{
+.projects__body {
   width: 80vw;
   max-width: 1270px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-column-gap: 20px;
-  grid-row-gap: 30px;
-  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
 }
 
-.projects-body__tile{
-  width: 300px;
-  height: 395px;
-  // margin: 20px 0;
+.projects-body__tile {
+  @include flexColumn(space-between);
   padding: 20px;
   background: #fff;
   color: #000;
+  box-shadow: inset 0 0 10px 2px gray;
 }
 
-.projects-tile__title{
+.projects-tile__title {
   font-weight: 400;
-  font-Size: 20px;
+  font-Size: 2rem;
   text-align: center;
+  margin-bottom: 15px;
 }
 
-.projects-tile__image{
-  margin: 15px 0;
+.projects-tile__image {
+  width: 100%;
+  border: 1px solid #555;
 }
 
-.projects-tile__description{
-  height: 30%;
-  font-size: 14px;
+.projects-tile__description {
+  font-size: 1.6rem;
+  text-align: center;
+  padding: 15px 0;
+  flex-grow: 1;
 }
 
-.projects-tile__links{
-  display: flex;
-  justify-content: space-between;
+.projects-tile__links {
+  @include flexRow(space-between);
+  margin-top: 10px;
+  width: 100%;
 }
 
-.projects-links__link{
+.projects-links__link {
   text-decoration: none;
-  color: #000;
+  color: blue;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-decoration: underline;
   cursor: pointer;
 }
