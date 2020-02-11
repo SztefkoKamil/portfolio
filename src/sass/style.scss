@@ -15,7 +15,6 @@
 
 html{
   font-size: 10px;
-
 }
 
 body{
@@ -23,7 +22,6 @@ body{
   font-size: 1.6rem;
   font-weight: 300;
   color: #fff;
-  overflow-x: hidden;
 }
 
 body::-webkit-scrollbar{
@@ -50,6 +48,11 @@ body::-webkit-scrollbar-thumb{
   align-items: center;
   position: relative;
   z-index: 1;
+  width: 100vw;
+}
+
+.main {
+  width: 100%;
 }
 
 .footer{
@@ -60,8 +63,8 @@ body::-webkit-scrollbar-thumb{
   background: rgb(20, 20, 20);
 }
 
-@media screen and (min-width: 1281px){
+@media screen and (min-width: 1024px){
   .footer{
-    font-size: 24px;
+    font-size: 18px;
   }
 }
