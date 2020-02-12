@@ -30,6 +30,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
     "smoothscroll-polyfill": "^0.4.4"
   }
 }
