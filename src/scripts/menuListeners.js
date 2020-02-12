@@ -1,13 +1,12 @@
 'user strict';
 
+import smoothscroll from 'smoothscroll-polyfill';
+
 const menuBtn = document.getElementById('menu-toggle-btn'),
       menuField = document.getElementById('menu-field'),
       nav = document.getElementById('nav'),
-      navAnchors = Array.from(document.querySelectorAll('.navAnchor')),
-      pageBody = document.querySelector('body');
+      navAnchors = Array.from(document.querySelectorAll('.navAnchor'));
 let screenWidth = window.innerWidth;
-
-window.addEventListener('resize', () => screenWidth = window.innerWidth);
 
 function toggleMobileMenu(e) {
   e.stopPropagation();
@@ -24,15 +23,17 @@ function toggleMenuActiveAnchor(e) {
     left: 0,
     behavior: 'smooth'
   });
-
+  
   navAnchors.forEach(a => a.classList.remove('active'));
   e.target.classList.add('active');
   if(screenWidth < 768) toggleMobileMenu(e);
 };
 
-const activeClickListeners = () => {
+const activeMenuListeners = () => {
+  smoothscroll.polyfill();
+  window.addEventListener('resize', () => screenWidth = window.innerWidth);
   menuBtn.addEventListener('click', toggleMobileMenu);
   nav.addEventListener('click', toggleMenuActiveAnchor);
 };
 
-export { activeClickListeners };
+export { activeMenuListeners };

@@ -1,12 +1,11 @@
 'user strict';
 
 import './sass/style.scss';
-import smoothscroll from 'smoothscroll-polyfill';
+
 import { activeScreenPositionDetector } from './scripts/screenPosition';
-import { activeClickListeners } from './scripts/menu';
+import { activeMenuListeners } from './scripts/menuListeners';
 
 window.addEventListener('DOMContentLoaded', () => {
   activeScreenPositionDetector();
-  activeClickListeners();
-  smoothscroll.polyfill();
+  activeMenuListeners();
 });
