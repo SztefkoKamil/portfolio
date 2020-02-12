@@ -1,39 +1,35 @@
-
-.main__contact{
+.main__contact {
+  @include flexColumn();
   padding: 70px 0 50px 0;
   width: 360px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.contact__title{
+.contact__title {
   font-size: 3rem;
   font-weight: 700;
 }
 
-.contact__subtitle{
+.contact__subtitle {
   font-size: 1.8rem;
   font-weight: 400;
   width: 310px;
   margin: 30px 0 50px 0;
 
-  & span{
+  & span {
     display: block;
     text-align: center;
   }
 }
 
-.contact-subtitle__part-1{
+.contact-subtitle__part-1 {
   margin-bottom: 10px;
 }
 
-.contact__tile{
+.contact__tile {
+  @include flexRow(flex-start);
   width: 310px;
   height: 80px;
-  display: flex;
-  align-items: center;
   background: #fff;
   margin-bottom: 20px;
   padding: 15px;
@@ -41,52 +37,51 @@
   cursor: pointer;
 }
 
-.contact-tile__icon{
+.contact-tile__icon {
   width: 60px;
 }
 
-.contact-tile__info{
+.contact-tile__info {
   color: #000;
   margin-left: 30px;
 }
 
-.contact__socials{
-  width: 280px;
-  display: flex;
-  justify-content: space-between;
+.contact__socials {
+  @include flexRow(space-between);
+  width: 310px;
   margin: 30px 0;
 }
 
-.contact-socials__tile{
+.contact-socials__tile {
+  @include flexColumn;
   width: 110px;
   height: 140px;
   padding: 10px;
   background: #fff;
   cursor: pointer;
   text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.contact-socials__image{
+
+.contact-socials__image {
   width: 90px;
 }
 
-.contact-socials__image--github{
+.contact-socials__image--github {
   width: 70px;
   margin: 10px 0;
 }
 
-.contact-socials__title{
+.contact-socials__title {
   text-align: center;
   color: #000;
 }
 
-.hover-shadow{
+.hover-shadow {
   transition: box-shadow .2s linear;
 }
-
-.hover-shadow:hover{
-  box-shadow: inset 0 0 10px 3px rgb(83, 83, 83);
+@media screen and (min-width: 1024px) {
+  .hover-shadow:hover {
+    box-shadow: inset 0 0 10px 3px rgb(83, 83, 83);
+  }
 }
