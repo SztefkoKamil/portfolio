@@ -3,7 +3,8 @@
 const menuBtn = document.getElementById('menu-toggle-btn'),
       menuField = document.getElementById('menu-field'),
       nav = document.getElementById('nav'),
-      navAnchors = Array.from(document.querySelectorAll('.navAnchor'));
+      navAnchors = Array.from(document.querySelectorAll('.navAnchor')),
+      pageBody = document.querySelector('body');
 let screenWidth = window.innerWidth;
 
 window.addEventListener('resize', () => screenWidth = window.innerWidth);
@@ -15,6 +16,15 @@ function toggleMobileMenu(e) {
 };
 
 function toggleMenuActiveAnchor(e) {
+  e.preventDefault();
+  const href = e.target.hash;
+  const targetOffsetTop = document.querySelector(href).offsetTop;
+  window.scrollTo({
+    top: targetOffsetTop,
+    left: 0,
+    behavior: 'smooth'
+  });
+
   navAnchors.forEach(a => a.classList.remove('active'));
   e.target.classList.add('active');
   if(screenWidth < 768) toggleMobileMenu(e);
