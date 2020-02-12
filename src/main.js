@@ -1,19 +1,8 @@
 'user strict';
 
 import './sass/style.scss';
-
-import { activeClickListener } from './scripts/menu';
-import { setScreenSize, getScreenSize } from './scripts/screenSize';
+import { activeClickListeners } from './scripts/menu';
 
 window.addEventListener('DOMContentLoaded', () => {
-  setScreenSize();
-  activeClickListener();
+  activeClickListeners();
 });
-
-window.addEventListener('load', () => {
-
-  console.log('Page loaded');
-
-
-});
-
