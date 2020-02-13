@@ -51,7 +51,7 @@ module.exports = {
       filename: 'css/styles.css'
     }),
     new webpack.HotModuleReplacementPlugin(),
-    // new CleanWebpackPlugin()
+    new CleanWebpackPlugin()
   ],
   devServer: {
 		port: 8080,
