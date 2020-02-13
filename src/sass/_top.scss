@@ -3,30 +3,53 @@
   height: 100vh;
   width: 100vw;
   position: relative;
+  max-width: 1270px;
 }
+
+.top__image {
+  position: absolute;
+  top: 15vw;
+  left: 10vw;
+  width: 40vw;
+  max-width: 400px;
+  border-radius: 50%;
+}
+
 .top__title{
-  display: flex;
-  flex-direction: column;
+  @include flexColumn(center, flex-start);
   position: absolute;
   right: 10vw;
-  bottom: 10vh;
+  bottom: 10vw;
 }
+
 .top-title__name{
-  display: flex;
-  flex-direction: column;
+  @include flexColumn(center, flex-start);
   font-weight: 300;
   font-size: calc(45px + 1vw);
   line-height: 100%;
 }
+
 .top-title__profession{
   margin: 10px 0;
   font-weight: 300;
   font-size: calc(22px + 0.5vw);
 }
+
 .top-title__motto{
-  display: inline-flex;
-  flex-direction: column;
+  @include flexColumn(center, flex-start);
   font-size: calc(14px + 0.5vw);
   font-weight: 300;
   align-self: flex-end;
+}
+
+@media screen and (min-width: 1270px) {
+  .top__image {
+    top: 190px;
+    left: 127px;
+  }
+
+  .top__title {
+    right: 127px;
+    bottom: 127px;
+  }
 }
