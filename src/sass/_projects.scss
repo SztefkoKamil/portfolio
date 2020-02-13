@@ -60,3 +60,9 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.projects-links__link--disabled {
+  text-decoration: line-through;
+  cursor: not-allowed;
+  color: gray;
+}
