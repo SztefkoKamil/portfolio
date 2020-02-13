@@ -34,6 +34,7 @@ const activeMenuListeners = () => {
   window.addEventListener('resize', () => screenWidth = window.innerWidth);
   menuBtn.addEventListener('click', toggleMobileMenu);
   nav.addEventListener('click', toggleMenuActiveAnchor);
+  nav.focus();
 };
 
 export { activeMenuListeners };
