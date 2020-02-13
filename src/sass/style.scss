@@ -8,17 +8,17 @@
 @import './_projects.scss';
 @import './_contact.scss';
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html{
+html {
   font-size: 10px;
 }
 
-body{
+body {
   font-family: 'Roboto', 'Arial';
   font-size: 1.6rem;
   font-weight: 300;
@@ -26,15 +26,15 @@ body{
   overflow-x: hidden;
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   background-color: rgb(20, 20, 20);
 }
-body::-webkit-scrollbar-thumb{
+body::-webkit-scrollbar-thumb {
   background-color: rgb(118, 22, 207);
-  border-radius: 35%;
+  border-radius: 10px;
 }
 
-.background{
+.background {
   background: linear-gradient(130deg, rgb(118, 22, 207), rgb(35, 3, 71));
   position: fixed;
   top: 0;
@@ -44,10 +44,8 @@ body::-webkit-scrollbar-thumb{
   z-index: 0;
 }
 
-.container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container {
+  @include flexColumn;
   position: relative;
   z-index: 1;
   width: 100vw;
@@ -57,7 +55,7 @@ body::-webkit-scrollbar-thumb{
   width: 100%;
 }
 
-.footer{
+.footer {
   width: 100%;
   padding: 30px 10px;
   font-size: calc(1rem + 1vw);
@@ -65,8 +63,8 @@ body::-webkit-scrollbar-thumb{
   background: rgb(20, 20, 20);
 }
 
-@media screen and (min-width: 1024px){
-  .footer{
+@media screen and (min-width: 1024px) {
+  .footer {
     font-size: 18px;
   }
 }
