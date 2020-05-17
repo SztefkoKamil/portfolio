@@ -2,6 +2,7 @@
   <div id="app">
     <Menu />
     <router-view />
+    <div class="background"></div>
   </div>
 </template>
 
@@ -47,5 +48,19 @@ button {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--color-first);
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+
+  .background {
+    background: url("./assets/images/bg.webp") center top;
+    background-size: cover;
+    filter: brightness(20%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -10;
+  }
 }
 </style>
