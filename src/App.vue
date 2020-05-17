@@ -24,7 +24,7 @@ html {
   --first: #a825c9;
   --bg-first: #0d0d0d;
   --bg-second: #08000a;
-  --text-shadow: 2px 2px 2px var(--first);
+  --text-shadow: 3px 3px 1px var(--first);
   --box-shadow: 0 0 15px var(--first);
 }
 
@@ -62,5 +62,14 @@ button {
     bottom: 0;
     z-index: -10;
   }
+}
+
+.view-header {
+  font-family: var(--font-second);
+  font-size: 32px;
+  font-weight: 700;
+  text-shadow: var(--text-shadow);
+  line-height: 100%;
+  letter-spacing: 3px;
 }
 </style>
