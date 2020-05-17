@@ -1,11 +1,10 @@
-'user strict';
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
 
-import './sass/style.scss';
+Vue.config.productionTip = false;
 
-import { activeScreenPositionDetector } from './scripts/screenPosition';
-import { activeMenuListeners } from './scripts/menuListeners';
-
-window.addEventListener('DOMContentLoaded', () => {
-  activeScreenPositionDetector();
-  activeMenuListeners();
-});
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount("#app");
