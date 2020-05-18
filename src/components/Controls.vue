@@ -1,6 +1,6 @@
 <template>
   <nav class="controls-container">
-    <button class="left">
+    <button class="left" @click="prevRoute">
       <svg
         aria-hidden="true"
         focusable="false"
@@ -14,7 +14,7 @@
         ></path>
       </svg>
     </button>
-    <button class="right">
+    <button class="right" @click="nextRoute">
       <svg
         aria-hidden="true"
         focusable="false"
@@ -63,7 +63,18 @@ export default {
     });
   },
   methods: {
+    prevRoute() {
+      // listeners: App.vue
+      eventBus.$emit('prevRoute');
+      this.$router.prevRoute();
+    },
+    nextRoute() {
+      // listeners: App.vue
+      eventBus.$emit('nextRoute');
+      this.$router.nextRoute();
+    },
     scrollDown() {
+      // listeners: About.vue
       eventBus.$emit('scrollDown');
     }
   }
