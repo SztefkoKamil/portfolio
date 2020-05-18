@@ -28,7 +28,7 @@
         ></path>
       </svg>
     </button>
-    <button v-if="showDown" class="down">
+    <button v-if="showDown" @click="scrollDown" class="down">
       <svg
         aria-hidden="true"
         focusable="false"
@@ -46,11 +46,26 @@
 </template>
 
 <script>
+import eventBus from '../misc/eventBus';
+
 export default {
   data() {
     return {
       showDown: false
     };
+  },
+  created() {
+    eventBus.$on('showDown', () => {
+      this.showDown = true;
+    });
+    eventBus.$on('hideDown', () => {
+      this.showDown = false;
+    });
+  },
+  methods: {
+    scrollDown() {
+      eventBus.$emit('scrollDown');
+    }
   }
 };
 </script>
