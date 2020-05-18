@@ -57,10 +57,16 @@ export default {
   },
   watch: {
     isOpen(value) {
-      if (value) this.$refs.wrapper.classList.add('menu-open');
-      else {
+      const wrapperClass = this.$refs.wrapper.classList;
+      if (value) {
+        wrapperClass.add('menu-open');
         setTimeout(() => {
-          this.$refs.wrapper.classList.remove('menu-open');
+          wrapperClass.add('overflow-auto');
+        }, 400);
+      } else {
+        wrapperClass.remove('overflow-auto');
+        setTimeout(() => {
+          wrapperClass.remove('menu-open');
         }, 300);
       }
     }
@@ -120,11 +126,15 @@ export default {
     left: 0;
     right: 0;
     height: 0;
-    padding: 80px 0 30px;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
 
     &.menu-open {
       height: 100vh;
+    }
+
+    &.overflow-auto {
+      overflow-y: auto;
     }
   }
 
@@ -134,6 +144,8 @@ export default {
     align-items: center;
     justify-content: center;
     background-color: hsla(0, 0%, 0%, 10%);
+    padding: 80px 0 30px;
+    min-height: 100vh;
 
     .nav-title {
       font-family: var(--font-third);
@@ -185,7 +197,7 @@ export default {
   }
 
   .toggle-nav-enter-active {
-    animation: show-nav 0.3s 1 ease-in;
+    animation: show-nav 0.3s 1 ease-in forwards;
   }
   @keyframes show-nav {
     0% {
@@ -198,7 +210,7 @@ export default {
     }
   }
   .toggle-nav-leave-active {
-    animation: hide-nav 0.3s 1 ease-in;
+    animation: hide-nav 0.3s 1 ease-in forwards;
   }
   @keyframes hide-nav {
     0% {
