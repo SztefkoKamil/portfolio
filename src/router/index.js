@@ -1,58 +1,55 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-import Intro from "../views/Intro";
-import About from "../views/About";
-import Skills from "../views/Skills";
-import Projects from "../views/Projects";
-import Contact from "../views/Contact";
+import Intro from '../views/Intro';
+import About from '../views/About';
+import Skills from '../views/Skills';
+import Projects from '../views/Projects';
+import Contact from '../views/Contact';
+import logic from './logic';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    name: "Intro",
-    path: "/",
+    name: 'Intro',
+    path: '/',
     component: Intro
   },
   {
-    name: "About",
-    path: "/about",
+    name: 'About',
+    path: '/about',
     component: About,
-    meta: { title: "About Me" }
+    meta: { title: 'About Me' }
   },
   {
-    name: "Skills",
-    path: "/skills",
+    name: 'Skills',
+    path: '/skills',
     component: Skills,
-    meta: { title: "My skills" }
+    meta: { title: 'My skills' }
   },
   {
-    name: "Projects",
-    path: "/projects",
+    name: 'Projects',
+    path: '/projects',
     component: Projects,
-    meta: { title: "My projects" }
+    meta: { title: 'My projects' }
   },
   {
-    name: "Contact",
-    path: "/contact",
+    name: 'Contact',
+    path: '/contact',
     component: Contact,
-    meta: { title: "Contact" }
+    meta: { title: 'Contact' }
   }
 ];
 
-const makeTitle = (to, from, next) => {
-  if (to.path === "/") document.title = "Kamil Sztefko - Web Developer";
-  else document.title = `${to.meta.title} - Kamil Sztefko`;
-  next();
-};
-
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
 });
 
-router.beforeEach(makeTitle);
+router.beforeEach(logic.beforeEachLogic);
+router.nextRoute = logic.nextRoute;
+router.prevRoute = logic.prevRoute;
 
 export default router;
