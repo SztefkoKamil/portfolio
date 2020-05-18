@@ -1,58 +1,35 @@
 <template>
   <div id="app">
     <Menu />
-    <router-view />
+    <transition name="switch-view">
+      <keep-alive>
+        <router-view />
+      </keep-alive>
+    </transition>
+    <Controls />
     <div class="background"></div>
   </div>
 </template>
 
 <script>
-import Menu from "./components/Menu";
+import Menu from './components/Menu';
+import Controls from './components/Controls';
 
 export default {
-  components: { Menu }
+  components: { Menu, Controls }
 };
 </script>
 
 <style lang="scss">
-// variables
-html {
-  --font-first: "Lato";
-  --font-second: "Josefin Sans";
-  --font-first: "Audiowide";
-  --color-first: #fafafa;
-  --first: #a825c9;
-  --bg-first: #0d0d0d;
-  --bg-second: #08000a;
-  --text-shadow: 3px 3px 1px var(--first);
-  --box-shadow: 0 0 15px var(--first);
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-button {
-  border: none;
-  background: transparent;
-  color: currentColor;
-}
+@import './misc/global-styles.scss';
 
 #app {
-  font-family: "Lato", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: var(--color-first);
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  padding: 90px 0 0;
 
   .background {
-    background: url("./assets/images/bg.webp") center top;
+    background: url('./assets/images/bg.webp') center top;
     background-size: cover;
     filter: brightness(20%);
     position: fixed;
@@ -62,14 +39,5 @@ button {
     bottom: 0;
     z-index: -10;
   }
-}
-
-.view-header {
-  font-family: var(--font-second);
-  font-size: 32px;
-  font-weight: 700;
-  text-shadow: var(--text-shadow);
-  line-height: 100%;
-  letter-spacing: 3px;
 }
 </style>
