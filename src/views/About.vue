@@ -33,15 +33,20 @@ export default {
       eventBus.$on('scrollDown', () => this.scrollText(text, this.textHeight));
     },
     cropTextBox(textRef) {
-      const marginBottom = 70;
+      const marginBottom = 155;
       const { clientHeight } = textRef;
       const { offsetTop } = textRef;
       const windowHeight = window.innerHeight;
       const maxTextHeight = windowHeight - offsetTop - marginBottom;
+      console.log(clientHeight, maxTextHeight);
       if (clientHeight > maxTextHeight) {
-        eventBus.$emit('showDown');
+        setTimeout(() => {
+          // listeners: Controls.vue
+          eventBus.$emit('showDown');
+        }, 500);
         return `${maxTextHeight}px`;
       }
+      // listeners: Controls.vue
       eventBus.$emit('hideDown');
       return this.textHeight;
     },
@@ -56,6 +61,12 @@ export default {
   },
   mounted() {
     this.runListeners();
+  },
+  activated() {
+    console.log('activated');
+    const { text } = this.$refs;
+    this.textHeight = 'auto';
+    this.$nextTick(() => (this.textHeight = this.cropTextBox(text)));
   }
 };
 </script>

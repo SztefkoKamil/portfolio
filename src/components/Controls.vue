@@ -61,7 +61,7 @@ export default {
       this.showDown = true;
     });
     eventBus.$on('hideDown', () => {
-      this.showDown = false;
+      setTimeout(() => (this.showDown = false), 250);
     });
   },
   methods: {
