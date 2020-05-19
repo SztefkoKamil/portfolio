@@ -33,7 +33,7 @@ export default {
       eventBus.$on('scrollDown', () => this.scrollText(text, this.textHeight));
     },
     cropTextBox(textRef) {
-      const marginBottom = 155;
+      const marginBottom = 105;
       const { clientHeight } = textRef;
       const { offsetTop } = textRef;
       const windowHeight = window.innerHeight;
