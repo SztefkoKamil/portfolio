@@ -2,6 +2,9 @@ import eventBus from '../misc/eventBus';
 
 const views = ['Intro', 'About', 'Skills', 'Projects', 'Contact'];
 
+let controlClick = false;
+eventBus.$on('controlClick', () => (controlClick = true));
+
 const nextRoute = function() {
   const current = this.currentRoute.name;
   const currentIndex = views.indexOf(current);
@@ -22,12 +25,15 @@ const prevRoute = function() {
 };
 
 const beforeEachLogic = (to, from, next) => {
+  // listeners: Conrols.vue
+  eventBus.$emit('hideDown');
   makeTitle(to);
-  setTransitionDirection(to, from);
+  if (!controlClick) setTransitionDirection(to, from);
   next();
+  controlClick = false;
 };
 
-const makeTitle = to => {
+const makeTitle = (to) => {
   if (to.path === '/') document.title = 'Kamil Sztefko - Web Developer';
   else document.title = `${to.meta.title} - Kamil Sztefko`;
 };
