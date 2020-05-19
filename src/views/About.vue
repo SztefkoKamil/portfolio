@@ -38,7 +38,6 @@ export default {
       const { offsetTop } = textRef;
       const windowHeight = window.innerHeight;
       const maxTextHeight = windowHeight - offsetTop - marginBottom;
-      console.log(clientHeight, maxTextHeight);
       if (clientHeight > maxTextHeight) {
         setTimeout(() => {
           // listeners: Controls.vue
@@ -63,7 +62,6 @@ export default {
     this.runListeners();
   },
   activated() {
-    console.log('activated');
     const { text } = this.$refs;
     this.textHeight = 'auto';
     this.$nextTick(() => (this.textHeight = this.cropTextBox(text)));
