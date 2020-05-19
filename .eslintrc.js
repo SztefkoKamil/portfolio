@@ -62,7 +62,7 @@ module.exports = {
     'no-undef': 'off',
     'no-unused-vars': 'warn',
     'arrow-body-style': ['warn', 'as-needed'],
-    'arrow-parens': ['error', 'as-needed'],
+    'arrow-parens': ['off', 'as-needed'],
     'arrow-spacing': 'error',
     'constructor-super': 'error',
     'no-class-assign': 'error',
