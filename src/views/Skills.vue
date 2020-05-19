@@ -1,7 +1,7 @@
 <template>
-  <article class="skills-container short">
+  <article class="skills-container">
     <h1 class="view-header">Skills</h1>
-    <div class="wrapper">
+    <div class="outer-swiper-wrapper">
       <button class="swiper-btn-prev swiper-btn" @click="prevSlide">
         <svg
           aria-hidden="true"
@@ -31,9 +31,15 @@
         </svg>
       </button>
       <swiper ref="mySwiper" :options="swiperOptions" @resize="setSwiperSize">
-        <swiper-slide v-for="(skill, i) in skills" :key="i">{{
-          skill
-        }}</swiper-slide>
+        <swiper-slide v-for="level in knowledge" :key="level.name">
+          <h4>{{ level.title }}</h4>
+          <ul>
+            <li v-for="skill in level.skills" :key="skill.name">
+              <img class="img" :src="skill.img" />
+              <p>{{ skill.name }}</p>
+            </li>
+          </ul>
+        </swiper-slide>
       </swiper>
     </div>
   </article>
@@ -57,7 +63,116 @@ export default {
         effect: 'slide',
         spaceBetween: 40
       },
-      skills: [1, 2, 3, 4, 5]
+      knowledge: [
+        {
+          title: 'Good knowledge',
+          skills: [
+            {
+              name: 'HTML',
+              img: require('../assets/images/skills/HTML5.svg')
+            },
+            {
+              name: 'CSS',
+              img: require('../assets/images/skills/css-icon.png')
+            },
+            {
+              name: 'JavaScript',
+              img: require('../assets/images/skills/js-icon.webp')
+            },
+            {
+              name: 'Vue.js',
+              img: require('../assets/images/skills/vue-icon.png')
+            },
+            {
+              name: 'Bootstrap',
+              img: require('../assets/images/skills/bootstrap-icon.png')
+            }
+          ]
+        },
+        {
+          title: 'Medium knowledge',
+          skills: [
+            {
+              name: 'SASS',
+              img: require('../assets/images/skills/sass.svg')
+            },
+            {
+              name: 'NuxtJS',
+              img: require('../assets/images/skills/nuxt-icon.png')
+            },
+            {
+              name: 'MongoDB',
+              img: require('../assets/images/skills/mongodb-icon.png')
+            },
+            {
+              name: 'Node.js',
+              img: require('../assets/images/skills/node.svg')
+            },
+            {
+              name: 'jQuery',
+              img: require('../assets/images/skills/jQuery-icon.png')
+            },
+            {
+              name: 'WordPress',
+              img: require('../assets/images/skills/wordpress-icon.png')
+            },
+            {
+              name: 'Webpack',
+              img: require('../assets/images/skills/webpack.svg')
+            },
+            {
+              name: 'Git',
+              img: require('../assets/images/skills/git-icon.png')
+            }
+          ]
+        },
+        {
+          title: 'Basic knowledge',
+          skills: [
+            {
+              name: 'MySQL',
+              img: require('../assets/images/skills/mysql-icon.png')
+            },
+            {
+              name: 'PHP',
+              img: require('../assets/images/skills/PHP-icon.png')
+            },
+            {
+              name: 'Gulp',
+              img: require('../assets/images/skills/gulp-icon.png')
+            },
+            {
+              name: 'Web Components',
+              img: require('../assets/images/skills/web-components.webp')
+            }
+          ]
+        },
+        {
+          title: 'Tools',
+          skills: [
+            {
+              name: 'VS Code',
+              img: require('../assets/images/skills/VSC-icon.png')
+            },
+            {
+              name: 'Postman',
+              img: require('../assets/images/skills/postman-icon.png')
+            },
+            {
+              name: 'GIMP',
+              img: require('../assets/images/skills/GIMP-icon.png')
+            },
+            {
+              name: 'Figma',
+              img: require('../assets/images/skills/figma-icon.png')
+            },
+            {
+              name: 'Adobe XD',
+              img: require('../assets/images/skills/Adobe_XD.svg')
+            }
+          ]
+        }
+      ]
     };
   },
   methods: {
@@ -90,7 +205,7 @@ export default {
 
 <style lang="scss">
 .skills-container {
-  .wrapper {
+  .outer-swiper-wrapper {
     width: 280px;
     position: relative;
     margin: 40px auto;
@@ -108,17 +223,17 @@ export default {
     .swiper-btn-next {
       right: -40px;
     }
-  }
 
-  @media screen and (min-width: 680px) {
-    .wrapper {
-      width: 580px;
+    @media screen and (min-width: 680px) {
+      & {
+        width: 580px;
+      }
     }
-  }
 
-  @media screen and (min-width: 960px) {
-    .wrapper {
-      width: 880px;
+    @media screen and (min-width: 960px) {
+      & {
+        width: 880px;
+      }
     }
   }
 
@@ -134,12 +249,39 @@ export default {
       background-color: var(--bg-second);
       border: 1px solid var(--first);
       box-shadow: var(--box-shadow);
-      font-size: 80px;
-    }
-  }
+      padding: 10px 0;
 
-  &.short {
-    overflow-y: auto;
+      h4 {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-shadow: var(--text-shadow);
+      }
+
+      ul {
+        list-style: none;
+        margin: 15px 0 0;
+      }
+
+      li {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        margin: 0 0 10px;
+
+        .img {
+          justify-self: end;
+          height: 24px;
+        }
+
+        p {
+          text-align: left;
+          justify-self: start;
+          font-size: 18px;
+          font-weight: 700;
+          padding-left: 15px;
+        }
+      }
+    }
   }
 }
 </style>
