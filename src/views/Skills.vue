@@ -1,68 +1,25 @@
 <template>
   <article class="skills-container">
     <h1 class="view-header">Skills</h1>
-    <div class="outer-swiper-wrapper">
-      <button class="swiper-btn-prev swiper-btn" @click="prevSlide">
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          role="img"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 320 512"
-        >
-          <path
-            fill="currentColor"
-            d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"
-          />
-        </svg>
-      </button>
-      <button class="swiper-btn-next swiper-btn" @click="nextSlide">
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          role="img"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 320 512"
-        >
-          <path
-            fill="currentColor"
-            d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
-          />
-        </svg>
-      </button>
-      <swiper ref="mySwiper" :options="swiperOptions" @resize="setSwiperSize">
-        <swiper-slide v-for="level in knowledge" :key="level.name">
-          <h4>{{ level.title }}</h4>
-          <ul>
-            <li v-for="skill in level.skills" :key="skill.name">
-              <img class="img" :src="skill.img" />
-              <p>{{ skill.name }}</p>
-            </li>
-          </ul>
-        </swiper-slide>
-      </swiper>
-    </div>
+    <CardsSlider :cards="knowledge">
+      <template v-slot="card">
+        <CardSkill :content="card" />
+      </template>
+    </CardsSlider>
   </article>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import 'swiper/css/swiper.css';
+import CardsSlider from '../components/Cards-slider';
+import CardSkill from '../components/Card-skill';
 
 export default {
   components: {
-    Swiper,
-    SwiperSlide
+    CardsSlider,
+    CardSkill
   },
   data() {
     return {
-      swiperOptions: {
-        slidesPerView: 1,
-        width: 260,
-        loop: true,
-        effect: 'slide',
-        spaceBetween: 40
-      },
       knowledge: [
         {
           title: 'Good knowledge',
@@ -174,114 +131,6 @@ export default {
         }
       ]
     };
-  },
-  methods: {
-    prevSlide() {
-      this.$refs.mySwiper.swiperInstance.slidePrev();
-    },
-    nextSlide() {
-      this.$refs.mySwiper.swiperInstance.slideNext();
-    },
-    setSwiperSize() {
-      const swiper = this.$refs.mySwiper.swiperInstance.params;
-      const windowWidth = window.innerWidth;
-      if (windowWidth >= 960 && swiper.width !== 860) {
-        swiper.slidesPerView = 3;
-        swiper.width = 860;
-      } else if (windowWidth >= 680 && swiper.width !== 560) {
-        swiper.slidesPerView = 2;
-        swiper.width = 560;
-      } else if (windowWidth < 640 && swiper.width !== 260) {
-        swiper.slidesPerView = 1;
-        swiper.width = 260;
-      }
-    }
-  },
-  mounted() {
-    this.setSwiperSize();
   }
 };
 </script>
-
-<style lang="scss">
-.skills-container {
-  .outer-swiper-wrapper {
-    width: 280px;
-    position: relative;
-    margin: 40px auto;
-
-    .swiper-btn {
-      position: absolute;
-      top: 50px;
-      width: 40px;
-      z-index: 10;
-      padding: 10px;
-    }
-    .swiper-btn-prev {
-      left: -40px;
-    }
-    .swiper-btn-next {
-      right: -40px;
-    }
-
-    @media screen and (min-width: 680px) {
-      & {
-        width: 580px;
-      }
-    }
-
-    @media screen and (min-width: 960px) {
-      & {
-        width: 880px;
-      }
-    }
-  }
-
-  .swiper-container {
-    margin: 0 auto;
-
-    .swiper-wrapper {
-      padding: 10px;
-    }
-
-    .swiper-slide {
-      height: 340px;
-      background-color: var(--bg-second);
-      border: 1px solid var(--first);
-      box-shadow: var(--box-shadow);
-      padding: 10px 0;
-
-      h4 {
-        font-size: 24px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-shadow: var(--text-shadow);
-      }
-
-      ul {
-        list-style: none;
-        margin: 15px 0 0;
-      }
-
-      li {
-        display: grid;
-        grid-template-columns: 70px 1fr;
-        margin: 0 0 10px;
-
-        .img {
-          justify-self: end;
-          height: 24px;
-        }
-
-        p {
-          text-align: left;
-          justify-self: start;
-          font-size: 18px;
-          font-weight: 700;
-          padding-left: 15px;
-        }
-      }
-    }
-  }
-}
-</style>
