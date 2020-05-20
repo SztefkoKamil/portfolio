@@ -50,7 +50,6 @@ export default {
   }
 
   img {
-    width: 200px;
     height: 100px;
     background: var(--first);
     margin: 20px 0 15px;
