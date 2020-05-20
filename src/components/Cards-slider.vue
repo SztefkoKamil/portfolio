@@ -239,7 +239,7 @@ export default {
       background-color: var(--bg-second);
       border: 1px solid var(--first);
       box-shadow: var(--box-shadow);
-      padding: 10px 0;
+      padding: 10px;
     }
   }
 }
