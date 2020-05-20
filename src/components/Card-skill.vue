@@ -3,7 +3,7 @@
     <h4>{{ content.card.title }}</h4>
     <ul>
       <li v-for="skill in content.card.skills" :key="skill.name">
-        <img class="img" :src="skill.img" />
+        <img class="img" :src="skill.img" :alt="`Icon of the ${skill.name}`" />
         <p>{{ skill.name }}</p>
       </li>
     </ul>
