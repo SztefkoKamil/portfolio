@@ -28,6 +28,11 @@ body {
   font-size: 16px;
 }
 
+button:focus,
+a:focus {
+  outline: 1px solid var(--first);
+}
+
 button {
   border: none;
   background: transparent;

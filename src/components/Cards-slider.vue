@@ -217,15 +217,16 @@ export default {
   .slider-btn {
     position: absolute;
     top: 50px;
-    width: 40px;
+    height: 46px;
+    width: 30px;
     z-index: 10;
-    padding: 10px;
+    padding: 2px;
   }
   .slider-btn-prev {
-    left: -40px;
+    left: -35px;
   }
   .slider-btn-next {
-    right: -40px;
+    right: -35px;
   }
 
   @media screen and (min-width: 680px) {

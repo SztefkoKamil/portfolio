@@ -4,6 +4,7 @@
       class="toggle-menu-btn"
       :class="{ 'menu-open': isOpen }"
       @click="isOpen = !isOpen"
+      aria-label="toggle navigation menu"
     >
       <span></span>
       <span></span>

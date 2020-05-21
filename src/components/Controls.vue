@@ -212,8 +212,9 @@ export default {
   justify-content: space-between;
 
   button {
-    width: 50px;
+    width: 40px;
     height: 50px;
+    margin: 0 5px;
     color: var(--first);
     will-change: color;
     animation: glow 1s alternate infinite ease-in-out;
@@ -233,9 +234,10 @@ export default {
 
   .down {
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
+    width: 60px;
   }
 }
 </style>
