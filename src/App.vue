@@ -44,7 +44,7 @@ export default {
   .background {
     background: url('./assets/images/bg.webp') center top;
     background-size: cover;
-    filter: brightness(20%);
+    filter: brightness(25%);
     position: fixed;
     top: 0;
     left: 0;

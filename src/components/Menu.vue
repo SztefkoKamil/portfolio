@@ -143,7 +143,7 @@ export default {
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    background-color: hsla(0, 0%, 0%, 10%);
+    background-color: hsla(0, 0%, 0%, 0.9);
     padding: 80px 0 30px;
     min-height: 100vh;
 
