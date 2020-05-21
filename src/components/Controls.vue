@@ -52,15 +52,17 @@ export default {
   data() {
     return {
       showDown: false,
-      spamClickBlocker: false
+      spamClickBlocker: false,
+      scrollingNow: false,
+      scrollChild: false
     };
   },
   mounted() {
-    this.listenTouchMove();
-    eventBus.$on('showDown', () => {
-      this.showDown = true;
-    });
+    this.checkTouch();
+    this.listenToScroll();
+    eventBus.$on('showDown', () => (this.showDown = true));
     eventBus.$on('hideDown', () => {
+      this.scrollChild = false;
       setTimeout(() => (this.showDown = false), 250);
     });
   },
@@ -89,17 +91,24 @@ export default {
       // listeners: About.vue
       eventBus.$emit('scrollDown');
     },
-    listenTouchMove() {
+    checkTouch() {
+      try {
+        document.createEvent('touchevent');
+        this.listenTouchViewSwitch();
+        this.listenTouchScroll();
+      } catch (e) {
+        return false;
+      }
+    },
+    listenTouchViewSwitch() {
       const controlPanelHeight = 120;
       const moveMin = 50;
       let start = null;
       this.$refs.controlsContainer.addEventListener('touchstart', (event) => {
-        // console.log(event.targetTouches[0]);
         start = event.targetTouches[0];
       });
       this.$refs.controlsContainer.addEventListener('touchend', (event) => {
         const windowHeight = window.innerHeight;
-        // console.log(event.changedTouches[0]);
         const end = event.changedTouches[0];
         const startHeight =
           windowHeight - start.pageY < controlPanelHeight ? true : false;
@@ -110,6 +119,58 @@ export default {
         else if (startHeight && endHeight && start.pageX + moveMin < end.pageX)
           this.prevRoute();
       });
+    },
+    listenTouchScroll() {
+      let start = false;
+      window.addEventListener('touchstart', (e) => {
+        if (e.target.classList.contains('scroll-child')) start = e.touches[0];
+        else start = false;
+      });
+      window.addEventListener('touchend', (e) => {
+        if (!start) return null;
+
+        const xSpan = 50;
+        const ySpan = 20;
+        const end = e.changedTouches[0];
+
+        if (end.pageX < start.pageX - xSpan || end.pageX > start.pageX + xSpan)
+          return null;
+
+        if (end.pageY - ySpan > start.pageY) this.scrollParentElement('up');
+        else if (end.pageY + ySpan < start.pageY)
+          this.scrollParentElement('down');
+      });
+    },
+    listenToScroll() {
+      window.addEventListener('mousemove', (e) => {
+        if (this.showDown)
+          this.scrollChild = e.toElement.classList.contains('scroll-child');
+      });
+      window.addEventListener('mousewheel', (e) => {
+        if (this.scrollingNow) return null;
+        this.scrollingNow = true;
+
+        let direction = 'down';
+        if (e.deltaY < 0) direction = 'up';
+
+        if (this.showDown && this.scrollChild)
+          this.scrollParentElement(direction);
+        else this.scrollViewSwitch(direction);
+        setTimeout(() => (this.scrollingNow = false), 500);
+      });
+    },
+    scrollParentElement(direction) {
+      if (direction === 'up') {
+        // listeners: About.vue
+        eventBus.$emit('scrollUp');
+      } else {
+        // listeners: About.vue
+        eventBus.$emit('scrollDown');
+      }
+    },
+    scrollViewSwitch(direction) {
+      if (direction === 'up') this.prevRoute();
+      else this.nextRoute();
     }
   }
 };

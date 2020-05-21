@@ -1,8 +1,15 @@
 <template>
   <article class="about-container">
     <h1 class="view-header">About Me</h1>
-    <div class="text" ref="text" :style="'height:' + textHeight">
-      <p v-for="(text, i) in paragraphs" :key="i">{{ text }}</p>
+    <div
+      class="text"
+      id="about-scroll-parent"
+      ref="text"
+      :style="'height:' + textHeight"
+    >
+      <p class="scroll-child" v-for="(text, i) in paragraphs" :key="i">
+        {{ text }}
+      </p>
     </div>
   </article>
 </template>
@@ -30,7 +37,8 @@ export default {
         this.$nextTick(() => (this.textHeight = this.cropTextBox(text)));
       });
 
-      eventBus.$on('scrollDown', () => this.scrollText(text, this.textHeight));
+      eventBus.$on('scrollDown', () => this.scrollText(text, 'down'));
+      eventBus.$on('scrollUp', () => this.scrollText(text, 'up'));
     },
     cropTextBox(textRef) {
       const marginBottom = 105;
@@ -49,13 +57,20 @@ export default {
       eventBus.$emit('hideDown');
       return this.textHeight;
     },
-    scrollText(text, textHeight) {
-      textHeight = textHeight.replace('px', '');
-      text.scrollBy({
-        top: textHeight - 50,
-        left: 0,
-        behavior: 'smooth'
-      });
+    scrollText(text, direction) {
+      if (direction === 'up') {
+        text.scrollBy({
+          top: -200,
+          left: 0,
+          behavior: 'smooth'
+        });
+      } else if (direction === 'down') {
+        text.scrollBy({
+          top: 200,
+          left: 0,
+          behavior: 'smooth'
+        });
+      }
     }
   },
   mounted() {
@@ -76,10 +91,11 @@ export default {
     padding: 0 50px;
     overflow-y: auto;
     max-width: 800px;
+    overflow: hidden;
   }
 
   p {
-    margin: 0 0 20px;
+    padding: 0 0 20px;
     line-height: 130%;
   }
 
