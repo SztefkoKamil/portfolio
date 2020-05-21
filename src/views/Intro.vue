@@ -4,11 +4,11 @@
       <img src="../assets/images/me.webp" alt="photo of me" />
     </div>
     <div>
-      <div class="title">
-        <h1 class="">Kamil Sztefko</h1>
+      <hgroup class="title">
+        <h1>Kamil Sztefko</h1>
         <h2>Web Developer</h2>
         <h3>With passion to internet technologies</h3>
-      </div>
+      </hgroup>
     </div>
   </article>
 </template>
@@ -25,7 +25,7 @@
 
   .title {
     margin: 60px auto 0;
-    width: 280px;
+    width: 310px;
   }
 
   h1 {
@@ -33,6 +33,7 @@
     font-size: 36px;
     text-shadow: var(--text-shadow);
     text-align: left;
+    letter-spacing: 2px;
   }
 
   h2 {
@@ -40,7 +41,7 @@
     font-weight: 400;
     text-shadow: var(--text-shadow);
     text-align: left;
-    margin: 20px 0 10px;
+    margin: 20px 0 10px 36px;
   }
 
   h3 {
@@ -48,6 +49,7 @@
     font-weight: 400;
     text-shadow: var(--text-shadow);
     text-align: left;
+    margin-left: 36px;
   }
 
   @media screen and (min-width: 500px) {
@@ -63,7 +65,7 @@
   @media screen and (min-width: 768px) {
     img {
       transform: translateX(-15vw);
-      margin: 30px 0 0;
+      // margin: 30px 0 0;
     }
 
     .title {
@@ -74,14 +76,14 @@
   @media screen and (min-width: 1024px) {
     img {
       transform: translateX(-15vw);
-      margin: 60px 0 0;
+      // margin: 60px 0 0;
       width: 300px;
       height: 300px;
     }
 
     .title {
       transform: translateX(15vw);
-      width: 370px;
+      width: 390px;
 
       h1 {
         font-size: 46px;
@@ -89,10 +91,12 @@
 
       h2 {
         font-size: 28px;
+        margin: 20px 0 10px 46px;
       }
 
       h3 {
         font-size: 18px;
+        margin-left: 46px;
       }
     }
   }
@@ -100,27 +104,12 @@
   @media screen and (min-width: 1280px) {
     img {
       transform: translateX(-200px);
-      margin: 120px 0 0;
-      // width: 300px;
-      // height: 300px;
+      // margin: 120px 0 0;
     }
 
     .title {
       transform: translateX(230px);
-      width: 370px;
       margin: 0 auto;
-
-      h1 {
-        font-size: 46px;
-      }
-
-      h2 {
-        font-size: 28px;
-      }
-
-      h3 {
-        font-size: 18px;
-      }
     }
   }
 }

@@ -107,5 +107,11 @@ export default {
       font-size: 18px;
     }
   }
+
+  @media screen and (min-width: 1024px) {
+    p {
+      font-size: 20px;
+    }
+  }
 }
 </style>
