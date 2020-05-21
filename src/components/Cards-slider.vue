@@ -47,6 +47,7 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import 'swiper/css/swiper.css';
+import eventBus from '../misc/eventBus';
 
 export default {
   props: ['cards'],
@@ -199,6 +200,10 @@ export default {
   },
   mounted() {
     this.setSwiperSize();
+    eventBus.$on('switchCard', (direction) => {
+      if (direction === 'next') this.nextSlide();
+      else if (direction === 'prev') this.prevSlide();
+    });
   }
 };
 </script>

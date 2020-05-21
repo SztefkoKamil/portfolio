@@ -65,6 +65,7 @@ export default {
   mounted() {
     this.checkTouch();
     this.listenToScroll();
+    this.listenKeyboard();
     eventBus.$on('showDown', () => (this.showDown = true));
     eventBus.$on('hideDown', () => {
       this.scrollChild = false;
@@ -177,6 +178,21 @@ export default {
     scrollViewSwitch(direction) {
       if (direction === 'up') this.prevRoute();
       else this.nextRoute();
+    },
+    listenKeyboard() {
+      document.addEventListener('keyup', (e) => {
+        const { key } = e;
+        if (e.ctrlKey && key === 'ArrowRight') {
+          // listeners: Cards-slider.vue
+          eventBus.$emit('switchCard', 'next');
+        } else if (e.ctrlKey && key === 'ArrowLeft') {
+          // listeners: Cards-slider.vue
+          eventBus.$emit('switchCard', 'prev');
+        } else if (key === 'ArrowRight') this.nextRoute();
+        else if (key === 'ArrowLeft') this.prevRoute();
+        else if (key === 'ArrowUp') this.scrollParentElement('up');
+        else if (key === 'ArrowDown') this.scrollParentElement('down');
+      });
     }
   }
 };
