@@ -7,7 +7,7 @@
       ref="text"
       :style="'height:' + textHeight"
     >
-      <p class="scroll-child" v-for="(text, i) in paragraphs" :key="i">
+      <p class="scroll-child" v-for="(text, i) in aboutParagraphs" :key="i">
         {{ text }}
       </p>
     </div>
@@ -16,17 +16,16 @@
 
 <script>
 import eventBus from '../misc/eventBus';
+import { getters } from '../misc/store';
 
 export default {
   data() {
     return {
-      paragraphs: [
-        'Jestem web developerem samoukiem, uczę się z darmowych materiałów z sieci, płatnych video kursów i oczywiście dokumentacji technicznej. Dwuletnie doswiadczenie w zespołowej pracy 100% zdalnie pozwoliło mi wyrobić w sobie ogromną cierpliwość i komunikatywność ale również zdyscyplinowanie, dzięki któremu nie mam problemów z zarządzaniem swoim czasem.',
-        'Za swoje najważniejsze cechy uważam dokładność oraz wytrwałość i samodzielność w rozwiązywaniu problemów co pozwala mi szybciej się rozwijać poprzez eliminację popełnianych błędów. Swój kod zawsze staram się tworzyć według znanych reguł KISS i DRY ale również przykładam dużą wagę do jego czystości i czytelności.',
-        'Jako osoba ambitna, większość wolnego czasu przeznaczam na pogłębianie wiedzy i umiejętności związanych z branżą IT. Kierunkiem, w jakim chcę się rozwijać to tworzenie oprogramowania aplikacji webowych zarówno po stronie front-endu jak i back-endu, głównie w języku JavaScript.'
-      ],
       textHeight: 'auto'
     };
+  },
+  computed: {
+    ...getters // aboutParagraphs
   },
   methods: {
     runListeners() {
