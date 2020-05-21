@@ -146,7 +146,7 @@ export default {
         if (this.showDown)
           this.scrollChild = e.toElement.classList.contains('scroll-child');
       });
-      window.addEventListener('mousewheel', (e) => {
+      window.addEventListener('wheel', (e) => {
         if (this.scrollingNow) return null;
         this.scrollingNow = true;
 
@@ -156,6 +156,7 @@ export default {
         if (this.showDown && this.scrollChild)
           this.scrollParentElement(direction);
         else this.scrollViewSwitch(direction);
+
         setTimeout(() => (this.scrollingNow = false), 500);
       });
     },

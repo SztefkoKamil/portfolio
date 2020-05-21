@@ -84,7 +84,8 @@ module.exports = {
     'prefer-template': 'warn',
     'require-yield': 'error',
     'rest-spread-spacing': ['error', 'never'],
-    'template-curly-spacing': ['error', 'never']
+    'template-curly-spacing': ['error', 'never'],
+    'vue/no-unused-components': 'warn'
   },
   overrides: [
     {
