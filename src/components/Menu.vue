@@ -41,6 +41,9 @@
                   >Contact</router-link
                 >
               </li>
+              <li>
+                <Info />
+              </li>
             </ul>
           </nav>
         </div>
@@ -50,7 +53,10 @@
 </template>
 
 <script>
+import Info from './Info';
+
 export default {
+  components: { Info },
   data() {
     return {
       isOpen: false
