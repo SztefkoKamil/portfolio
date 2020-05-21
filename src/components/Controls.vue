@@ -1,6 +1,6 @@
 <template>
   <nav class="controls-container" ref="controlsContainer">
-    <button class="left" @click="prevRoute">
+    <button class="left" @click="prevRoute" aria-label="previous view">
       <svg
         aria-hidden="true"
         focusable="false"
@@ -14,7 +14,7 @@
         />
       </svg>
     </button>
-    <button class="right" @click="nextRoute">
+    <button class="right" @click="nextRoute" aria-label="next view">
       <svg
         aria-hidden="true"
         focusable="false"
@@ -28,7 +28,12 @@
         />
       </svg>
     </button>
-    <button v-if="showDown" @click="scrollDown" class="down">
+    <button
+      v-if="showDown"
+      @click="scrollDown"
+      class="down"
+      aria-label="scroll down"
+    >
       <svg
         aria-hidden="true"
         focusable="false"

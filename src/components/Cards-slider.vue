@@ -1,6 +1,10 @@
 <template>
   <div class="card-slider-container">
-    <button class="slider-btn-prev slider-btn" @click="prevSlide">
+    <button
+      class="slider-btn-prev slider-btn"
+      @click="prevSlide"
+      aria-label="previous card"
+    >
       <svg
         aria-hidden="true"
         focusable="false"
@@ -14,7 +18,11 @@
         />
       </svg>
     </button>
-    <button class="slider-btn-next slider-btn" @click="nextSlide">
+    <button
+      class="slider-btn-next slider-btn"
+      @click="nextSlide"
+      aria-label="next card"
+    >
       <svg
         aria-hidden="true"
         focusable="false"
