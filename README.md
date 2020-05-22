@@ -1,6 +1,6 @@
 # portfolio
 
-My portfolio website.
+My portfolio app, currently with hardcoded data. Will be managed via CMS in the near future.
 
 Used technologies: Vue.js, SASS.
 

@@ -7,34 +7,30 @@
     </h2>
     <div>
       <div class="info-bar phone">
-        <img class="white-background" src="../assets/images/phone.svg" alt="" />
+        <img class="white-background" src="../assets/images/phone.svg" alt />
         <a href="tel:+48531614625">+48 531 614 625</a>
       </div>
       <div class="info-bar email">
-        <img class="white-background" src="../assets/images/email.svg" alt="" />
+        <img class="white-background" src="../assets/images/email.svg" alt />
         <a href="mailto:contact@kamilsztefko.pl">contact@kamilsztefko.pl</a>
       </div>
       <div class="info-bar socials">
-        <a
-          href="https://github.com/sztefkokamil"
-          title="My GitHub profile"
-          target="_blank"
-        >
-          <img src="../assets/images/github.svg" alt="" />
+        <a href="https://github.com/sztefkokamil" title="My GitHub profile" target="_blank">
+          <img src="../assets/images/github.svg" alt />
         </a>
         <a
           href="https://www.linkedin.com/in/kamil-sztefko-483a09179/"
           title="My LinkedIn profile"
           target="_blank"
         >
-          <img src="../assets/images/linkedin-icon.png" alt="" />
+          <img src="../assets/images/linkedin-icon.png" alt />
         </a>
         <a
           href="https://assets.it-leaders.pl/moj-profil?id2=a3680c6e501817ba33a063289a47bd63&fbclid=IwAR0YTGDEhjcaKe4R6SfzWuMmYW2OS6gGZSWa46DyCXDXNLfpKCj6lFp0_UU"
           title="My IT-Leaders profile"
           target="_blank"
         >
-          <img src="../assets/images/it-leaders-icon.png" alt="" />
+          <img src="../assets/images/it-leaders-icon.png" alt />
         </a>
       </div>
       <div class="info-bar copy">
