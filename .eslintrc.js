@@ -1,11 +1,11 @@
 module.exports = {
   root: true,
   env: {
-    node: true,
+    node: true
   },
   extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier'],
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: 'babel-eslint'
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -59,10 +59,10 @@ module.exports = {
     yoda: ['warn', 'never'],
     'no-delete-var': 'warn',
     'no-shadow-restricted-names': 'error',
-    'no-undef': 'error',
+    'no-undef': 'off',
     'no-unused-vars': 'warn',
     'arrow-body-style': ['warn', 'as-needed'],
-    'arrow-parens': ['error', 'as-needed'],
+    'arrow-parens': ['off', 'as-needed'],
     'arrow-spacing': 'error',
     'constructor-super': 'error',
     'no-class-assign': 'error',
@@ -78,20 +78,24 @@ module.exports = {
     'prefer-destructuring': [
       'warn',
       { array: true, object: true },
-      { enforceForRenamedProperties: false },
+      { enforceForRenamedProperties: false }
     ],
     'prefer-rest-params': 'warn',
     'prefer-template': 'warn',
     'require-yield': 'error',
     'rest-spread-spacing': ['error', 'never'],
     'template-curly-spacing': ['error', 'never'],
+    'vue/no-unused-components': 'warn'
   },
   overrides: [
     {
-      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)'
+      ],
       env: {
-        jest: true,
-      },
-    },
-  ],
+        jest: true
+      }
+    }
+  ]
 };
