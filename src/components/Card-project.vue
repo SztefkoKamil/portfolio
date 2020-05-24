@@ -1,5 +1,5 @@
 <template>
-  <div class="project-card-container">
+  <div class="project-card-container card-grab">
     <h4>{{ content.card.name }}</h4>
     <img
       :src="content.card.img"
