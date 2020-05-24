@@ -58,17 +58,15 @@ export default {
     return {
       showDown: false,
       spamClickBlocker: false,
-      scrollingNow: false,
-      scrollChild: false
+      scrollingNow: false
     };
   },
   mounted() {
     this.checkTouch();
-    this.listenToScroll();
+    this.listenWheelSpin();
     this.listenKeyboard();
     eventBus.$on('showDown', () => (this.showDown = true));
     eventBus.$on('hideDown', () => {
-      this.scrollChild = false;
       setTimeout(() => (this.showDown = false), 250);
     });
   },
@@ -101,7 +99,6 @@ export default {
       try {
         document.createEvent('touchevent');
         this.listenTouchViewSwitch();
-        this.listenTouchScroll();
       } catch (e) {
         return false;
       }
@@ -126,58 +123,15 @@ export default {
           this.prevRoute();
       });
     },
-    listenTouchScroll() {
-      let start = false;
-      window.addEventListener('touchstart', (e) => {
-        if (e.target.classList.contains('scroll-child')) start = e.touches[0];
-        else start = false;
-      });
-      window.addEventListener('touchend', (e) => {
-        if (!start) return null;
-
-        const xSpan = 50;
-        const ySpan = 20;
-        const end = e.changedTouches[0];
-
-        if (end.pageX < start.pageX - xSpan || end.pageX > start.pageX + xSpan)
-          return null;
-
-        if (end.pageY - ySpan > start.pageY) this.scrollParentElement('up');
-        else if (end.pageY + ySpan < start.pageY)
-          this.scrollParentElement('down');
-      });
-    },
-    listenToScroll() {
-      window.addEventListener('mousemove', (e) => {
-        if (this.showDown)
-          this.scrollChild = e.toElement.classList.contains('scroll-child');
-      });
+    listenWheelSpin() {
       window.addEventListener('wheel', (e) => {
         if (this.scrollingNow) return null;
         this.scrollingNow = true;
-
-        let direction = 'down';
-        if (e.deltaY < 0) direction = 'up';
-
-        if (this.showDown && this.scrollChild)
-          this.scrollParentElement(direction);
-        else this.scrollViewSwitch(direction);
-
+        // if wheel rounded down switch to next view otherwise to previous view
+        if (e.deltaY > 0) this.nextRoute();
+        else this.prevRoute();
         setTimeout(() => (this.scrollingNow = false), 500);
       });
-    },
-    scrollParentElement(direction) {
-      if (direction === 'up') {
-        // listeners: About.vue
-        eventBus.$emit('scrollUp');
-      } else {
-        // listeners: About.vue
-        eventBus.$emit('scrollDown');
-      }
-    },
-    scrollViewSwitch(direction) {
-      if (direction === 'up') this.prevRoute();
-      else this.nextRoute();
     },
     listenKeyboard() {
       document.addEventListener('keyup', (e) => {
@@ -216,7 +170,8 @@ export default {
     height: 50px;
     margin: 0 5px;
     color: var(--first);
-    will-change: color;
+    will-change: filter;
+    cursor: pointer;
     animation: glow 1s alternate infinite ease-in-out;
     @keyframes glow {
       0% {

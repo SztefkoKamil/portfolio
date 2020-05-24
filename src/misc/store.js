@@ -5,7 +5,8 @@ const state = Vue.observable({
     "Hello, my name's Kamil and I'm passionate self tought Web Developer. My adventure with programming begins at the end of 2017 and quickly turned into a passion. I started learning intensively from free and paid courses, technical documentation, blogs and many other sources available in the web, thanks to few months later i got my first job as a Webmaster.",
     "Creating websites and web applications makes me tremendous pleasure, especially implementing software on the front-end and the back-end side through what work became for me not only enjoyment but also hobby. For a long time I'm interesting about personal development and the path of programmer it's constant self development through getting new skills and knowledge, but also works on yourself and self work flow, what resulting also in better life flow.",
     "In sake of I'm moving on wheelchair from beginning of my developer career I working 100% remotely thanks to which I'm disciplined, I can managed my time well, and approaches my duties very diligently. Above two years of remote work taught me of communicativity, patience, perseverance, self-reliance and determination in figuring out of encountered problems.",
-    'As a ambitious person, most of my free time I allocate to self development binded to IT industry. During the work I emphasize on legibility, clarity and cleanliness of code I creating, I try to approach the tasks logically and eagerly accepts constructive criticism. My motto and goal is "every day try to be better than u was yesterday". To my other interests belong: health, spiritual and personal development, psychology, social engineering, metaphysics, esoterics and paranormal phenomena.',
+    'As a ambitious person, most of my free time I allocate to self development binded to IT industry. During the work I emphasize on legibility, clarity and cleanliness of code I creating, I try to approach the tasks logically and eagerly accepts constructive criticism.',
+    'My motto and goal is "every day try to be better than you was yesterday". To my other interests belong: health, spiritual and personal development, psychology, social engineering, metaphysics, esoterics and paranormal phenomena.',
     "I'm happy to take on interesting challenges and I'm open to various proposals so I encourage you to contact me regarding employment, participation in projects or individual orders."
   ],
   skillsKnowledge: [
@@ -50,10 +51,6 @@ const state = Vue.observable({
           img: require('../assets/images/skills/mongodb-icon.png')
         },
         {
-          name: 'Node.js',
-          img: require('../assets/images/skills/node.svg')
-        },
-        {
           name: 'jQuery',
           img: require('../assets/images/skills/jQuery-icon.png')
         },
@@ -74,6 +71,10 @@ const state = Vue.observable({
     {
       title: 'Basic knowledge',
       skills: [
+        {
+          name: 'Node.js',
+          img: require('../assets/images/skills/node.svg')
+        },
         {
           name: 'MySQL',
           img: require('../assets/images/skills/mysql-icon.png')
@@ -159,7 +160,7 @@ const state = Vue.observable({
       id: 'ghw54gserghw54',
       name: 'WordPress theme',
       description:
-        'Custom WordPress blog theme build based on free template. Used technologies: WordPress, Bootstrap, JavaScript, jQuery.',
+        'Custom WordPress blog theme built based on free template. Used technologies: WordPress, Bootstrap, JavaScript, jQuery.',
       img: require('../assets/images/projects/wp-demo-blog.webp'),
       repo: 'https://github.com/SztefkoKamil/wp-demo-blog',
       live: 'https://wp-demo-blog.webkas.pl/'

@@ -92,6 +92,10 @@ export default {
   position: relative;
   z-index: 100;
 
+  button {
+    cursor: pointer;
+  }
+
   .toggle-menu-btn {
     width: 80px;
     height: 40px;

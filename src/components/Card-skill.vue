@@ -1,5 +1,5 @@
 <template>
-  <div class="skill-card-container">
+  <div class="skill-card-container card-grab">
     <h4>{{ content.card.title }}</h4>
     <ul>
       <li v-for="skill in content.card.skills" :key="skill.name">
@@ -18,6 +18,8 @@ export default {
 
 <style lang="scss">
 .skill-card-container {
+  height: 100%;
+
   h4 {
     font-size: 24px;
     font-weight: 700;

@@ -82,3 +82,19 @@ article {
     }
   }
 }
+
+.card-grab {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  & > * {
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
