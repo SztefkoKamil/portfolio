@@ -148,9 +148,9 @@ export default {
       });
     },
     listenToScroll() {
-      window.addEventListener('mousemove', (e) => {
+      window.addEventListener('mouseover', (e) => {
         if (this.showDown)
-          this.scrollChild = e.toElement.classList.contains('scroll-child');
+          this.scrollChild = e.target.classList.contains('scroll-child');
       });
       window.addEventListener('wheel', (e) => {
         if (this.scrollingNow) return null;
