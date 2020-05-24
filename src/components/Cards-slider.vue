@@ -1,6 +1,7 @@
 <template>
   <div class="card-slider-container">
     <button
+      v-if="showLeft"
       class="slider-btn-prev slider-btn"
       @click="prevSlide"
       aria-label="previous card"
@@ -19,6 +20,7 @@
       </svg>
     </button>
     <button
+      v-if="showRight"
       class="slider-btn-next slider-btn"
       @click="nextSlide"
       aria-label="next card"
@@ -57,123 +59,31 @@ export default {
   },
   data() {
     return {
+      showLeft: false,
+      showRight: true,
       swiperOptions: {
-        slidesPerView: 1,
-        width: 260,
-        loop: true,
         effect: 'slide',
-        spaceBetween: 40
-      },
-      knowledge: [
-        {
-          title: 'Good knowledge',
-          skills: [
-            {
-              name: 'HTML',
-              img: require('../assets/images/skills/HTML5.svg')
-            },
-            {
-              name: 'CSS',
-              img: require('../assets/images/skills/css-icon.png')
-            },
-            {
-              name: 'JavaScript',
-              img: require('../assets/images/skills/js-icon.webp')
-            },
-            {
-              name: 'Vue.js',
-              img: require('../assets/images/skills/vue-icon.png')
-            },
-            {
-              name: 'Bootstrap',
-              img: require('../assets/images/skills/bootstrap-icon.png')
-            }
-          ]
-        },
-        {
-          title: 'Medium knowledge',
-          skills: [
-            {
-              name: 'SASS',
-              img: require('../assets/images/skills/sass.svg')
-            },
-            {
-              name: 'NuxtJS',
-              img: require('../assets/images/skills/nuxt-icon.png')
-            },
-            {
-              name: 'MongoDB',
-              img: require('../assets/images/skills/mongodb-icon.png')
-            },
-            {
-              name: 'Node.js',
-              img: require('../assets/images/skills/node.svg')
-            },
-            {
-              name: 'jQuery',
-              img: require('../assets/images/skills/jQuery-icon.png')
-            },
-            {
-              name: 'WordPress',
-              img: require('../assets/images/skills/wordpress-icon.png')
-            },
-            {
-              name: 'Webpack',
-              img: require('../assets/images/skills/webpack.svg')
-            },
-            {
-              name: 'Git',
-              img: require('../assets/images/skills/git-icon.png')
-            }
-          ]
-        },
-        {
-          title: 'Basic knowledge',
-          skills: [
-            {
-              name: 'MySQL',
-              img: require('../assets/images/skills/mysql-icon.png')
-            },
-            {
-              name: 'PHP',
-              img: require('../assets/images/skills/PHP-icon.png')
-            },
-            {
-              name: 'Gulp',
-              img: require('../assets/images/skills/gulp-icon.png')
-            },
-            {
-              name: 'Web Components',
-              img: require('../assets/images/skills/web-components.webp')
-            }
-          ]
-        },
-        {
-          title: 'Tools',
-          skills: [
-            {
-              name: 'VS Code',
-              img: require('../assets/images/skills/VSC-icon.png')
-            },
-            {
-              name: 'Postman',
-              img: require('../assets/images/skills/postman-icon.png')
-            },
-            {
-              name: 'GIMP',
-              img: require('../assets/images/skills/GIMP-icon.png')
-            },
-            {
-              name: 'Figma',
-              img: require('../assets/images/skills/figma-icon.png')
-            },
-            {
-              name: 'Adobe XD',
-              img: require('../assets/images/skills/Adobe_XD.svg')
-            }
-          ]
+        spaceBetween: 40,
+        on: {
+          slideChange: () => {
+            // need to use slideChange becouse fromEdge cause bug when edge has been reached
+            this.showLeft = true;
+            this.showRight = true;
+          },
+          reachBeginning: () => {
+            // setTimeout ensures that showLeft will be set after slideChange was fired
+            setTimeout(() => {
+              this.showLeft = false;
+            }, 0);
+          },
+          reachEnd: () => {
+            // setTimeout ensures that showRight will be set after slideChange was fired
+            setTimeout(() => {
+              this.showRight = false;
+            }, 0);
+          }
         }
-      ]
+      }
     };
   },
   methods: {
@@ -186,13 +96,13 @@ export default {
     setSwiperSize() {
       const swiper = this.$refs.mySwiper.swiperInstance.params;
       const windowWidth = window.innerWidth;
-      if (windowWidth >= 960 && swiper.width !== 860) {
+      if (windowWidth >= 960) {
         swiper.slidesPerView = 3;
         swiper.width = 860;
-      } else if (windowWidth >= 680 && swiper.width !== 560) {
+      } else if (windowWidth >= 680) {
         swiper.slidesPerView = 2;
         swiper.width = 560;
-      } else if (windowWidth < 640 && swiper.width !== 260) {
+      } else if (windowWidth < 640) {
         swiper.slidesPerView = 1;
         swiper.width = 260;
       }
@@ -204,6 +114,9 @@ export default {
       if (direction === 'next') this.nextSlide();
       else if (direction === 'prev') this.prevSlide();
     });
+  },
+  activated() {
+    this.setSwiperSize();
   }
 };
 </script>
