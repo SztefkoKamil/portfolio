@@ -61,26 +61,22 @@ export default {
     return {
       showLeft: false,
       showRight: true,
+      swiper: null,
       swiperOptions: {
         effect: 'slide',
         spaceBetween: 40,
         on: {
           slideChange: () => {
-            // need to use slideChange becouse fromEdge cause bug when edge has been reached
-            this.showLeft = true;
-            this.showRight = true;
-          },
-          reachBeginning: () => {
-            // setTimeout ensures that showLeft will be set after slideChange was fired
-            setTimeout(() => {
+            if (this.swiper.isBeginning) {
               this.showLeft = false;
-            }, 0);
-          },
-          reachEnd: () => {
-            // setTimeout ensures that showRight will be set after slideChange was fired
-            setTimeout(() => {
+              this.showRight = true;
+            } else if (this.swiper.isEnd) {
               this.showRight = false;
-            }, 0);
+              this.showLeft = true;
+            } else {
+              this.showLeft = true;
+              this.showRight = true;
+            }
           }
         }
       }
@@ -88,13 +84,13 @@ export default {
   },
   methods: {
     prevSlide() {
-      this.$refs.mySwiper.swiperInstance.slidePrev();
+      this.swiper.slidePrev();
     },
     nextSlide() {
-      this.$refs.mySwiper.swiperInstance.slideNext();
+      this.swiper.slideNext();
     },
     setSwiperSize() {
-      const swiper = this.$refs.mySwiper.swiperInstance.params;
+      const swiper = this.swiper.params;
       const windowWidth = window.innerWidth;
       if (windowWidth >= 960) {
         swiper.slidesPerView = 3;
@@ -109,6 +105,7 @@ export default {
     }
   },
   mounted() {
+    this.swiper = this.$refs.mySwiper.swiperInstance;
     this.setSwiperSize();
     eventBus.$on('switchCard', (direction) => {
       if (direction === 'next') this.nextSlide();
