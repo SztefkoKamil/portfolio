@@ -50,10 +50,6 @@ const state = Vue.observable({
           img: require('../assets/images/skills/mongodb-icon.png')
         },
         {
-          name: 'Node.js',
-          img: require('../assets/images/skills/node.svg')
-        },
-        {
           name: 'jQuery',
           img: require('../assets/images/skills/jQuery-icon.png')
         },
@@ -74,6 +70,10 @@ const state = Vue.observable({
     {
       title: 'Basic knowledge',
       skills: [
+        {
+          name: 'Node.js',
+          img: require('../assets/images/skills/node.svg')
+        },
         {
           name: 'MySQL',
           img: require('../assets/images/skills/mysql-icon.png')
@@ -159,7 +159,7 @@ const state = Vue.observable({
       id: 'ghw54gserghw54',
       name: 'WordPress theme',
       description:
-        'Custom WordPress blog theme build based on free template. Used technologies: WordPress, Bootstrap, JavaScript, jQuery.',
+        'Custom WordPress blog theme built based on free template. Used technologies: WordPress, Bootstrap, JavaScript, jQuery.',
       img: require('../assets/images/projects/wp-demo-blog.webp'),
       repo: 'https://github.com/SztefkoKamil/wp-demo-blog',
       live: 'https://wp-demo-blog.webkas.pl/'
