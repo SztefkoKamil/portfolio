@@ -1,13 +1,12 @@
 <template>
   <article class="about-container">
     <h1 class="view-header">About Me</h1>
-    <div
-      class="text"
-      id="about-scroll-parent"
-      ref="text"
-      :style="'height:' + textHeight"
-    >
-      <p class="scroll-child" v-for="(text, i) in aboutParagraphs" :key="i">
+    <div class="text" ref="textBox" :style="'height:' + textHeight">
+      <p
+        :class="{ grab: showDown }"
+        v-for="(text, i) in aboutParagraphs"
+        :key="i"
+      >
         {{ text }}
       </p>
     </div>
@@ -21,6 +20,7 @@ import { getters } from '../misc/store';
 export default {
   data() {
     return {
+      showDown: false,
       textHeight: 'auto'
     };
   },
@@ -28,57 +28,117 @@ export default {
     ...getters // aboutParagraphs
   },
   methods: {
-    runListeners() {
-      const { text } = this.$refs;
-      this.textHeight = this.cropTextBox(text);
-      window.addEventListener('resize', () => {
-        this.textHeight = 'auto';
-        this.$nextTick(() => (this.textHeight = this.cropTextBox(text)));
-      });
-
-      eventBus.$on('scrollDown', () => this.scrollText(text, 'down'));
-      eventBus.$on('scrollUp', () => this.scrollText(text, 'up'));
+    setTextBoxHeight(textBox) {
+      this.textHeight = 'auto';
+      this.$nextTick(() => (this.textHeight = this.cropTextBox(textBox)));
     },
-    cropTextBox(textRef) {
+    cropTextBox(textBox) {
       const marginBottom = 105;
-      const { clientHeight } = textRef;
-      const { offsetTop } = textRef;
+      const { clientHeight } = textBox;
+      const { offsetTop } = textBox;
       const windowHeight = window.innerHeight;
       const maxTextHeight = windowHeight - offsetTop - marginBottom;
+
       if (clientHeight > maxTextHeight) {
         setTimeout(() => {
           // listeners: Controls.vue
           eventBus.$emit('showDown');
         }, 500);
+        // listeners: Controls.vue
+        eventBus.$emit('hideDown');
+        this.showDown = true;
         return `${maxTextHeight}px`;
       }
-      // listeners: Controls.vue
-      eventBus.$emit('hideDown');
+
+      this.showDown = false;
       return this.textHeight;
     },
-    scrollText(text, direction) {
-      if (direction === 'up') {
-        text.scrollBy({
-          top: -200,
-          left: 0,
-          behavior: 'smooth'
-        });
-      } else if (direction === 'down') {
-        text.scrollBy({
-          top: 200,
-          left: 0,
-          behavior: 'smooth'
-        });
-      }
+    listenMouseScroll(textBox) {
+      let grabbed = false;
+      textBox.addEventListener('mousedown', () => {
+        grabbed = true;
+      });
+      textBox.addEventListener('mouseup', () => {
+        grabbed = false;
+      });
+      textBox.addEventListener('mousemove', (e) => {
+        if (this.showDown && grabbed) {
+          let move = 0;
+          // set move distance
+          if (e.movementY > 0) move = 0 - e.movementY;
+          else move = Math.abs(e.movementY);
+
+          // block scroll if it's top or bottom
+          const isTop = textBox.scrollTop === 0;
+          const isBottom =
+            textBox.scrollTop === textBox.scrollHeight - textBox.clientHeight;
+          if (move < 0 && isTop) return null;
+          if (move > 0 && isBottom) return null;
+
+          textBox.scrollBy({
+            top: move,
+            left: 0
+          });
+        }
+      });
+    },
+    listenTouchScroll(textBox) {
+      let grabbed = false;
+      let oldY = null;
+      textBox.addEventListener('touchstart', () => {
+        grabbed = true;
+      });
+      textBox.addEventListener('touchend', () => {
+        grabbed = false;
+        oldY = null;
+      });
+      textBox.addEventListener('touchmove', (e) => {
+        if (this.showDown && grabbed) {
+          e.preventDefault();
+          if (!oldY) {
+            oldY = e.targetTouches[0].screenY;
+            return null;
+          }
+
+          const newY = e.targetTouches[0].screenY;
+          let move = 0;
+          // set move distance
+          move = newY - oldY;
+          if (move > 0) move = 0 - move;
+          else move = Math.abs(move);
+
+          // block scroll if it's top or bottom
+          const isTop = textBox.scrollTop === 0;
+          const isBottom =
+            textBox.scrollTop === textBox.scrollHeight - textBox.clientHeight;
+          if (move < 0 && isTop) return null;
+          else if (move > 0 && isBottom) return null;
+
+          textBox.scrollBy({
+            top: move,
+            left: 0
+          });
+          oldY = newY;
+        }
+      });
+    },
+    scrollDown(textBox) {
+      textBox.scrollBy({
+        top: textBox.clientHeight * 0.8,
+        left: 0,
+        behavior: 'smooth'
+      });
     }
   },
   mounted() {
-    this.runListeners();
+    const { textBox } = this.$refs;
+    window.addEventListener('resize', () => this.setTextBoxHeight(textBox));
+    eventBus.$on('scrollDown', () => this.scrollDown(textBox));
+    this.listenMouseScroll(textBox);
+    this.listenTouchScroll(textBox);
   },
   activated() {
-    const { text } = this.$refs;
-    this.textHeight = 'auto';
-    this.$nextTick(() => (this.textHeight = this.cropTextBox(text)));
+    this.setTextBoxHeight(this.$refs.textBox);
   }
 };
 </script>
@@ -96,6 +156,15 @@ export default {
   p {
     padding: 0 0 20px;
     line-height: 130%;
+
+    &.grab {
+      cursor: grab;
+      user-select: none;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
   }
 
   @media screen and (min-width: 768px) {
