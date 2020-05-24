@@ -134,6 +134,7 @@ export default {
     width: 30px;
     z-index: 10;
     padding: 2px;
+    cursor: pointer;
   }
   .slider-btn-prev {
     left: -35px;

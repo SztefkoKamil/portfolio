@@ -216,7 +216,8 @@ export default {
     height: 50px;
     margin: 0 5px;
     color: var(--first);
-    will-change: color;
+    will-change: filter;
+    cursor: pointer;
     animation: glow 1s alternate infinite ease-in-out;
     @keyframes glow {
       0% {
