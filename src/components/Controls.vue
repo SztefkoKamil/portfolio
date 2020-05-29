@@ -106,20 +106,28 @@ export default {
     listenTouchViewSwitch() {
       const controlPanelHeight = 120;
       const moveMin = 50;
-      let start = null;
+      let startTouch = null;
       this.$refs.controlsContainer.addEventListener('touchstart', (event) => {
-        start = event.targetTouches[0];
+        [startTouch] = event.targetTouches;
       });
       this.$refs.controlsContainer.addEventListener('touchend', (event) => {
         const windowHeight = window.innerHeight;
-        const end = event.changedTouches[0];
+        const [endTouch] = event.changedTouches;
         const startHeight =
-          windowHeight - start.pageY < controlPanelHeight ? true : false;
+          windowHeight - startTouch.pageY < controlPanelHeight ? true : false;
         const endHeight =
-          windowHeight - end.pageY < controlPanelHeight ? true : false;
-        if (startHeight && endHeight && start.pageX - moveMin > end.pageX)
+          windowHeight - endTouch.pageY < controlPanelHeight ? true : false;
+        if (
+          startHeight &&
+          endHeight &&
+          startTouch.pageX - moveMin > endTouch.pageX
+        )
           this.nextRoute();
-        else if (startHeight && endHeight && start.pageX + moveMin < end.pageX)
+        else if (
+          startHeight &&
+          endHeight &&
+          startTouch.pageX + moveMin < endTouch.pageX
+        )
           this.prevRoute();
       });
     },
