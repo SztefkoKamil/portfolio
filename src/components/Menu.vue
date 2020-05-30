@@ -17,27 +17,52 @@
           <nav>
             <ul>
               <li @click="closeNav">
-                <router-link class="nav-btn" to="/" tag="button" exact
+                <router-link
+                  id="menu-intro-link"
+                  class="nav-btn"
+                  to="/"
+                  tag="button"
+                  exact
                   >Intro</router-link
                 >
               </li>
               <li @click="closeNav">
-                <router-link class="nav-btn" to="/about" tag="button" exact
+                <router-link
+                  id="menu-about-link"
+                  class="nav-btn"
+                  to="/about"
+                  tag="button"
+                  exact
                   >About</router-link
                 >
               </li>
               <li @click="closeNav">
-                <router-link class="nav-btn" to="/skills" tag="button" exact
+                <router-link
+                  id="menu-skills-link"
+                  class="nav-btn"
+                  to="/skills"
+                  tag="button"
+                  exact
                   >Skills</router-link
                 >
               </li>
               <li @click="closeNav">
-                <router-link class="nav-btn" to="/projects" tag="button" exact
+                <router-link
+                  id="menu-projects-link"
+                  class="nav-btn"
+                  to="/projects"
+                  tag="button"
+                  exact
                   >Projects</router-link
                 >
               </li>
               <li @click="closeNav">
-                <router-link class="nav-btn" to="/contact" tag="button" exact
+                <router-link
+                  id="menu-contact-link"
+                  class="nav-btn"
+                  to="/contact"
+                  tag="button"
+                  exact
                   >Contact</router-link
                 >
               </li>
