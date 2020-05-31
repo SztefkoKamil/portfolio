@@ -1,6 +1,11 @@
 <template>
   <nav class="controls-container" ref="controlsContainer">
-    <button id="nav-left-arrow" class="left" @click="prevRoute" aria-label="previous view">
+    <button
+      id="nav-left-arrow"
+      class="left"
+      @click="prevRoute"
+      aria-label="previous view"
+    >
       <svg
         aria-hidden="true"
         focusable="false"
@@ -14,7 +19,12 @@
         />
       </svg>
     </button>
-    <button id="nav-right-arrow" class="right" @click="nextRoute" aria-label="next view">
+    <button
+      id="nav-right-arrow"
+      class="right"
+      @click="nextRoute"
+      aria-label="next view"
+    >
       <svg
         aria-hidden="true"
         focusable="false"
@@ -28,7 +38,12 @@
         />
       </svg>
     </button>
-    <button v-if="showDown" @click="scrollDown" class="down" aria-label="scroll down">
+    <button
+      v-if="showDown"
+      @click="scrollDown"
+      class="down"
+      aria-label="scroll down"
+    >
       <svg
         aria-hidden="true"
         focusable="false"
@@ -57,7 +72,7 @@ export default {
     };
   },
   mounted() {
-    this.checkTouch();
+    this.listenTouchViewSwitch();
     this.listenWheelSpin();
     this.listenKeyboard();
     eventBus.$on('showDown', () => (this.showDown = true));
@@ -89,14 +104,6 @@ export default {
     scrollDown() {
       // listeners: About.vue
       eventBus.$emit('scrollDown');
-    },
-    checkTouch() {
-      try {
-        document.createEvent('touchevent');
-        this.listenTouchViewSwitch();
-      } catch (e) {
-        return false;
-      }
     },
     listenTouchViewSwitch() {
       const controlPanelHeight = 120;
