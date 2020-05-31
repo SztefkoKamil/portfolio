@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-describe('e2e', () => {
+describe('navigation menu e2e', () => {
   let browser = null;
 
   beforeEach(async () => {
@@ -11,7 +11,7 @@ describe('e2e', () => {
     await browser.close();
   });
 
-  it('should properly navigate by menu', async () => {
+  it('should properly navigate via menu', async () => {
     const page = await browser.newPage();
     await page.goto('http://localhost:8080/');
 
@@ -22,9 +22,12 @@ describe('e2e', () => {
 
     await page.click('.toggle-menu-btn'); // open menu
     await page.waitFor(50); // wait for open menu animation
+    let navContainer = await page.$('.nav-container');
+    expect(navContainer).toBeTruthy; // nav-container should be opened
+
     await page.click('#menu-skills-link'); // go to skills view
     await page.waitFor(550); // wait for view switch animation
-    const navContainer = await page.$('.nav-container');
+    navContainer = await page.$('.nav-container');
     article = await page.$eval('article', (el) =>
       el.classList.contains('skills-container')
     );
