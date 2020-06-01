@@ -37,18 +37,18 @@ describe('/components/Controls.vue', () => {
   });
 
   it('should call proper methods when component has been mounted', () => {
-    const checkTouchFake = jest.fn();
+    const listenTouchViewSwitchFake = jest.fn();
     const listenWheelSpinFake = jest.fn();
     const listenKeyboardFake = jest.fn();
     shallowMount(Controls, {
       methods: {
-        checkTouch: checkTouchFake,
+        listenTouchViewSwitch: listenTouchViewSwitchFake,
         listenWheelSpin: listenWheelSpinFake,
         listenKeyboard: listenKeyboardFake
       }
     });
 
-    expect(checkTouchFake).toHaveBeenCalledTimes(1);
+    expect(listenTouchViewSwitchFake).toHaveBeenCalledTimes(1);
     expect(listenWheelSpinFake).toHaveBeenCalledTimes(1);
     expect(listenKeyboardFake).toHaveBeenCalledTimes(1);
   });
