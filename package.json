@@ -6,6 +6,8 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test": "vue-cli-service test:unit",
+    "unit": "npm run test -t unit",
+    "e2e": "npm run test -t e2e",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
