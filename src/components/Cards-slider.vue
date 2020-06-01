@@ -106,7 +106,6 @@ export default {
   },
   mounted() {
     this.swiper = this.$refs.mySwiper.swiperInstance;
-    this.setSwiperSize();
     eventBus.$on('switchCard', (direction) => {
       if (direction === 'next') this.nextSlide();
       else if (direction === 'prev') this.prevSlide();
