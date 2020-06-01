@@ -17,7 +17,7 @@
         </ul>
       </div>
     </transition>
-    <button @click="isOpen = !isOpen">INFO</button>
+    <button id="toggle-info" @click="isOpen = !isOpen">INFO</button>
   </div>
 </template>
 
