@@ -11,7 +11,14 @@ describe('/components/About.vue', () => {
     expect(h1.exists()).toBe(true);
   });
 
-  it('should proper amount of paragraphs', () => {
+  it('should has aboutParagraphs property which returns Array', () => {
+    const wrapper = shallowMount(About);
+    const paragraphs = wrapper.vm.aboutParagraphs;
+
+    expect(paragraphs).toEqual(expect.any(Array));
+  });
+
+  it('should comprise proper amount of paragraphs', () => {
     const wrapper = shallowMount(About);
     const paragraphs = wrapper.findAll('p');
 
