@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 
 import Projects from '../../../src/views/Projects';
 
-describe('/components/Projects.vue', () => {
+describe('/views/Projects.vue', () => {
   it('should comprise h1', () => {
     const wrapper = shallowMount(Projects);
     const h1 = wrapper.find('h1');

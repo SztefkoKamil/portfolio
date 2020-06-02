@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 
 import Contact from '../../../src/views/Contact';
 
-describe('/components/Contact.vue', () => {
+describe('/views/Contact.vue', () => {
   it('should comprise h1 & h2', () => {
     const wrapper = shallowMount(Contact);
     const h1 = wrapper.find('h1');

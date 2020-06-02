@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 
 import Intro from '../../../src/views/Intro';
 
-describe('/components/Intro.vue', () => {
+describe('/views/Intro.vue', () => {
   it('should comprise image, h1, h2 & h3', () => {
     const wrapper = shallowMount(Intro);
     const img = wrapper.find('img');

@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils';
 import About from '../../../src/views/About';
 import { getters } from '../../../src/misc/store';
 
-describe('/components/About.vue', () => {
+describe('/views/About.vue', () => {
   it('should comprise h1', () => {
     const wrapper = shallowMount(About);
     const h1 = wrapper.find('h1');
