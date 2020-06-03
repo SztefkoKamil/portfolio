@@ -5,16 +5,16 @@ const views = ['Intro', 'About', 'Skills', 'Projects', 'Contact'];
 let controlClick = false;
 eventBus.$on('controlClick', () => (controlClick = true));
 
-const nextRoute = function() {
+function nextRoute() {
   const current = this.currentRoute.name;
   const currentIndex = views.indexOf(current);
   let next = null;
   if (currentIndex === views.length - 1) next = '';
   else next = views[currentIndex + 1];
   this.push(`/${next.toLowerCase()}`);
-};
+}
 
-const prevRoute = function() {
+function prevRoute() {
   const current = this.currentRoute.name;
   const currentIndex = views.indexOf(current);
   let prev = null;
@@ -22,23 +22,25 @@ const prevRoute = function() {
   else if (currentIndex === 0) prev = views[views.length - 1];
   else prev = views[currentIndex - 1];
   this.push(`/${prev.toLowerCase()}`);
-};
+}
 
-const beforeEachLogic = (to, from, next) => {
+function beforeEachLogic(to, from, next) {
   // listeners: Conrols.vue
   eventBus.$emit('hideDown');
-  makeTitle(to);
+  document.title = makeTitle(to);
+  console.log(document.title);
+
   if (!controlClick) setTransitionDirection(to, from);
   next();
   controlClick = false;
-};
+}
 
-const makeTitle = (to) => {
-  if (to.path === '/') document.title = 'Kamil Sztefko - Web Developer';
-  else document.title = `${to.meta.title} - Kamil Sztefko`;
-};
+function makeTitle(to) {
+  if (to.path === '/') return 'Kamil Sztefko - Web Developer';
+  else return `${to.meta.title} - Kamil Sztefko`;
+}
 
-const setTransitionDirection = (to, from) => {
+function setTransitionDirection(to, from) {
   const routes = views.length - 1;
   const fromIndex = views.indexOf(from.name);
   const toIndex = views.indexOf(to.name);
@@ -49,6 +51,12 @@ const setTransitionDirection = (to, from) => {
     // listeners: App.vue
     eventBus.$emit('nextRoute');
   }
-};
+}
 
-export default { beforeEachLogic, nextRoute, prevRoute };
+export default {
+  beforeEachLogic,
+  nextRoute,
+  prevRoute,
+  makeTitle,
+  setTransitionDirection
+};
