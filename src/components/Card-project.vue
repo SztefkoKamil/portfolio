@@ -13,6 +13,7 @@
         :href="content.card.repo"
         :title="`Repository of the ${content.card.name} project`"
         target="_blank"
+        rel="noopener noreferrer"
         >Repository</a
       >
       <a v-if="!content.card.live" class="disabled">Live</a>
@@ -21,6 +22,7 @@
         :href="content.card.live"
         :title="`Live preview of the ${content.card.name} project`"
         target="_blank"
+        rel="noopener noreferrer"
         >Live</a
       >
     </div>
