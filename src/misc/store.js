@@ -101,6 +101,14 @@ const state = Vue.observable({
           img: require('../assets/images/skills/VSC-icon.png')
         },
         {
+          name: 'ESLint',
+          img: require('../assets/images/skills/eslint.svg')
+        },
+        {
+          name: 'Prettier',
+          img: require('../assets/images/skills/prettier.png')
+        },
+        {
           name: 'Postman',
           img: require('../assets/images/skills/postman-icon.png')
         },
