@@ -6,13 +6,13 @@
       <span>Feel free to contact!</span>
     </h2>
     <div>
-      <div class="info-bar phone">
+      <div class="info-bar">
         <img class="white-background" src="../assets/images/phone.svg" alt />
         <a href="tel:+48531614625">+48 531 614 625</a>
       </div>
-      <div class="info-bar email">
+      <div class="info-bar">
         <img class="white-background" src="../assets/images/email.svg" alt />
-        <a href="mailto:contact@kamilsztefko.pl">contact@kamilsztefko.pl</a>
+        <a href="mailto:info@kamilsztefko.pl">info@kamilsztefko.pl</a>
       </div>
       <div class="info-bar socials">
         <a
@@ -90,15 +90,7 @@ export default {
     a {
       text-decoration: none;
       color: var(--color-first);
-    }
-
-    &.phone a {
-      letter-spacing: 1px;
       font-weight: 700;
-    }
-
-    &.email a {
-      font-size: 15px;
     }
 
     &.socials {
